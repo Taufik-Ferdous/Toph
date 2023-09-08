@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define pb push_back
+
+#define F first
+#define S second
+
+#define all(x) x.begin(),x.end()
+
+
+void solve(){
+    vector<pair<ll, ll>> v(3);
+    for(ll i=0; i<3; ++i){
+        ll a, b; cin>>a >>b;
+        v[i]={a,b};
+    }
+    sort(all(v));
+
+    // for(auto i: v) cout<<i.F <<' ' <<i.S <<endl;
+
+    ll ans=v[0].S-v[0].F+1;
+    ll s=v[0].S;
+
+    for(ll i=1; i<3; ++i){
+        if(s<v[i].S){
+            if(v[i].F>s) ans+=((v[i].S-v[i].F)+1);
+            else ans+=(v[i].S-s);
+            s=v[i].S;
+        }
+    }
+    cout<<ans <<endl;
+}
+
+int main(){
+    ll t=1; 
+    cin>>t;
+    while(t--)
+        solve();
+}
