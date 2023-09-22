@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+#define all(x) x.begin(),x.end()
+#define allr(x) x.rbegin(),x.rend()
+
+void solve(){
+    ll n; cin>>n;
+    ll len = n*n;
+    vector<ll> v(len);
+    for(auto &i: v) cin>>i;
+    sort(all(v));
+    ll ans=0;
+    if(n%2==1) for(ll i=0; i<n-1; ++i) ans-=v[i];
+    else for(ll i=0; i<n; ++i) ans-=v[i];
+    sort(allr(v));
+    if(n%2==1) for(ll i=0; i<n-1; ++i) ans+=v[i];
+    else for(ll i=0; i<n; ++i) ans+=v[i];
+    cout<<ans <<endl;
+}
+
+int main(){
+    ll t=1;
+    // cin>>t;
+    while(t--)
+        solve();
+}
