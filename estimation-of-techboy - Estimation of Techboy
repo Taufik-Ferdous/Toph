@@ -1,0 +1,59 @@
+/**
+ *    Author: lulu (Tasmir_)
+ *    Created: 02-February-2024  10:57:50
+**/
+#include<bits/stdc++.h>
+using namespace std;
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+#define ll long long
+
+//====================================
+
+void solve(){
+    ll n, k; cin>>n >>k;
+    vector<ll> v1(n);
+    vector<ll> v2(n);
+
+    ll time=0;
+    for(ll i=0; i<n; ++i){
+        ll dum; cin>>dum;
+        time+=dum;
+        v1[i]=time;
+    }
+    time=0;
+    for(ll i=0; i<n; ++i){
+        ll dum; cin>>dum;
+        time+=dum;
+        v2[i]=time;
+    }
+
+    ll a=0, b=0;
+    for(ll i=k; i<time; i+=k){
+        ll count1=0, count2=0;
+        while(v1[a]<=i){
+            count1=a;
+            ++a;
+        }
+        while(v2[b]<=i){
+            count2=b;
+            ++b;
+        }
+        if(a>b){
+            cout<<"NO" <<'\n';
+            return;
+        }
+    }
+    cout<<"YES" <<'\n';
+}
+
+
+int main(){
+    optimize();
+
+    ll t=1;
+    cin>>t;
+    while(t--)
+        solve();
+}
