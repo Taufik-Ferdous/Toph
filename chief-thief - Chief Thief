@@ -1,0 +1,42 @@
+/**
+ *    Author: lulu (Tasmir_)
+ *    Created: 05-February-2024  16:44:09
+**/
+#include<bits/stdc++.h>
+using namespace std;
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+#define ll long long
+
+//====================================
+
+void solve(){
+    ll n; cin>>n;
+    vector<ll> v(n);
+    vector<ll> v_f(n);
+    vector<ll> v_s(n);
+    for(auto &i: v) cin>>i;
+
+    v_f[0]=v[0];
+    for(ll i=1; i<n; ++i) v_f[i]=v[i]*v_f[i-1];
+    v_s[n-1] = v[n-1];
+    for(ll i=n-2; i>=0; --i) v_s[i]=v[i]*v_s[i+1];
+
+    cout<<v_s[1];
+    if(n>1) cout<<' ';
+    for(ll i=1; i<n-1; ++i){
+        cout<<v_f[i-1] * v_s[i+1] <<' ';
+    }
+    if(n>2) cout<<v_f[n-2] <<'\n';
+}
+
+
+int main(){
+    optimize();
+
+    ll t=1;
+    // cin>>t;
+    while(t--)
+        solve();
+}
