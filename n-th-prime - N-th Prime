@@ -1,0 +1,46 @@
+/**
+ *    Author: lulu (Tasmir_)
+ *    Created: 07-February-2024  23:59:08
+**/
+#include<bits/stdc++.h>
+using namespace std;
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+#define ll long long
+
+//====================================
+ll div(ll a){
+    ll count = 0;
+    for(ll i=1; i<=sqrt(a); ++i){
+        if(a%i==0){
+            count++;
+            if((a/(a/i)) != a/i) ++count;
+        }
+    }
+    return count;
+}
+
+void solve(){
+    ll a, b; cin>>a >>b;
+    ll max = 0;
+    ll max_count=0;
+    for(ll i=a; i<=b; ++i){
+        ll count = div(i);
+        if(count>max_count){
+            max_count = count;
+            max = i;
+        }
+    }
+    cout<<"Between " <<a <<" and " <<b <<", " <<max <<" has a maximum of " <<max_count <<" divisors." <<'\n';
+}
+
+
+int main(){
+    optimize();
+
+    ll t=1;
+    cin>>t;
+    while(t--)
+        solve();
+}
